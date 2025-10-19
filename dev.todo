@@ -1,3 +1,37 @@
 Project Plan Visualization:
   ▫ https://miro.com/app/board/uXjVJ4OojCc=/?share_link_id=962243452458
 
+Kevin:
+  ▫ migrate prisma 'small_fixes'
+  ▫ API
+    ✔ /project @started(25-10-18 12:02) @done(25-10-18 12:02) @lasted(20s)
+      ✔ /create @started(25-10-18 09:56) @done(25-10-18 09:56) @lasted(42s)
+      ✔ /edit @started(25-10-18 09:52) @done(25-10-18 09:52) @lasted(21s)
+      ✔ /delete @started(25-10-18 10:00) @done(25-10-18 10:00) @lasted(5s)
+    ▫ /dependencies
+      ▫ /process
+        ▫ name
+        ▫ link
+        ▫ python
+        ▫ npm
+      ✔ /create @started(25-10-18 10:07) @done(25-10-18 10:07) @lasted(6s)
+      ✔ /edit @started(25-10-18 10:11) @done(25-10-18 10:11) @lasted(34s)
+      ✔ /delete @started(25-10-18 10:13) @done(25-10-18 10:13) @lasted(39s)
+  ▫ Feature 1
+  ▫ Feature 2
+
+Dean:
+  ▫ Build Notification Componenent
+  ▫ Feature 3: Build chatbot
+    ▫ <ChatbotComponent>
+      ▫ Text input bar
+      ▫ API logic
+      ▫ Prevents messages while one above is still loading
+      ▫ On new prompt & response: Calls saveMessage(messageIdx: number, prompt: str, response: str) - Kevin will code this
+    ▫ <ChatbotMessage>(prompt, message)
+      ▫ displays prompt in bubble
+      ▫ displays message as main text
+      ▫ ig reference what claude looks like
+
+Features:
+  ✔ Auth @started(25-10-18 09:30) @done(25-10-18 09:30) @lasted(40s)

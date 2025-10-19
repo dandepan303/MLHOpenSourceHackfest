@@ -1,4 +1,4 @@
-import { PrismaClient } from '@/lib/prisma/generated/prisma';
+import { PrismaClient } from '@/lib/generated/prisma/prisma';
 
 declare global {
   var prisma: PrismaClient | undefined;

@@ -171,3 +171,5 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/node,nextjs
 /src/generated/prisma
+
+service-account-key.json

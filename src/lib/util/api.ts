@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Session } from '@supabase/supabase-js';
 import { parseError } from './server_util';
-import { DefaultAPIRet } from '@/types/api_types';
+import { DefaultAPIRes } from '@/types/api_types';
 import { NextResponse } from 'next/server';
 
 type RequestProps = {
@@ -13,13 +13,9 @@ type RequestProps = {
 
 export async function request<T>({ type, route, body, session }: RequestProps): Promise<T> {
   try {
-    const controller = new AbortController();
-    setTimeout(() => controller.abort(), 1000 * 60);
-
     switch (type) {
       case 'GET': {
         const { data: res }: { data: T } = await axios.get(route, {
-          signal: controller.signal,
           withCredentials: true,
           validateStatus: () => true,
           headers: session ? { Authorization: `Bearer ${session?.access_token}` } : undefined,
@@ -30,7 +26,6 @@ export async function request<T>({ type, route, body, session }: RequestProps): 
       case 'POST': {
         const bodyData = body ? body : undefined;
         const { data: res }: { data: T } = await axios.post(route, bodyData, {
-          signal: controller.signal,
           withCredentials: true,
           validateStatus: () => true,
           headers: session ? { Authorization: `Bearer ${session?.access_token}` } : undefined,
@@ -40,7 +35,6 @@ export async function request<T>({ type, route, body, session }: RequestProps): 
       case 'DELETE': {
         const bodyData = body ? body : undefined;
         const { data: res }: { data: T } = await axios.delete(route, {
-          signal: controller.signal,
           withCredentials: true,
           validateStatus: () => true,
           headers: session ? { Authorization: `Bearer ${session?.access_token}` } : undefined,
@@ -67,6 +61,6 @@ export function verifyBody<T>(body: any, route: string): Response | null {
     return null;
   } catch (e: unknown) {
     console.error(`${route} error: `, e);
-    return NextResponse.json<DefaultAPIRet>({status: 'error', message: ''}, {status: 400});
+    return NextResponse.json<DefaultAPIRes>({status: 'error', message: ''}, {status: 400});
   }
 }
